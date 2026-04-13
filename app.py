@@ -134,9 +134,10 @@ st.sidebar.markdown(
 
 # Filtrar datos
 df = data[data['short_album_name'].isin(selected_albums)].copy()
-df['short_album_name'] = pd.Categorical(
-    df['short_album_name'], categories=ALBUM_ORDER, ordered=True
-)
+if not df.empty:
+    df['short_album_name'] = pd.Categorical(
+        df['short_album_name'], categories=ALBUM_ORDER, ordered=True
+    )
 
 
 # ============================================================
@@ -154,6 +155,11 @@ col1.metric("Álbumes", len(selected_albums))
 col2.metric("Canciones", len(df))
 col3.metric("Letras encontradas", df['lyrics_clean'].notna().sum())
 col4.metric("Sentimiento medio", f"{df['sentiment'].mean():.3f}" if df['sentiment'].notna().any() else "N/A")
+
+# Si no hay álbumes seleccionados, mostrar aviso y parar
+if df.empty:
+    st.warning("⬅️ Selecciona al menos un álbum en la barra lateral para ver el análisis.")
+    st.stop()
 
 
 # ============================================================
@@ -378,5 +384,5 @@ st.markdown("---")
 st.markdown(
     "**Trabajo Individual — Extracción de Información** | "
     "Dataset: Spotify 1.2M+ Songs (Kaggle) | "
-    "Letras: lyrics.ovh"
+    "Letras: AZLyrics / lyrics.ovh"
 )
