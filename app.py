@@ -115,7 +115,6 @@ data, ALBUM_ORDER = load_data()
 # ============================================================
 # SIDEBAR
 # ============================================================
-st.sidebar.image("https://i.imgur.com/8QHzVfd.png", width=200)  # Placeholder logo
 st.sidebar.title("🎤 Britney Spears")
 st.sidebar.markdown("**Spotify + Lyrics Analysis**")
 st.sidebar.markdown("---")
