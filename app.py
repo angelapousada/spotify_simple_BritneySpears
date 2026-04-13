@@ -64,9 +64,21 @@ def load_data():
     artist_df = pd.read_csv('artist_data.csv')
     lyrics_df = pd.read_csv('britney_lyrics.csv')
 
-    # Merge
-    merged = artist_df.merge(lyrics_df[['name', 'album', 'lyrics_clean']],
-                             on=['name', 'album'], how='left')
+    # Renombrar columna de lyrics para que coincida con artist_data
+    if 'album' in lyrics_df.columns and 'short_album_name' not in lyrics_df.columns:
+        lyrics_df = lyrics_df.rename(columns={'album': 'short_album_name'})
+
+    # Normalizar nombres para que coincidan entre ambos CSV
+    for d in [artist_df, lyrics_df]:
+        d['name'] = d['name'].str.strip()
+        d['short_album_name'] = d['short_album_name'].str.strip()
+
+    # Merge por nombre de canción y álbum
+    merged = artist_df.merge(
+        lyrics_df[['name', 'short_album_name', 'lyrics_clean']],
+        on=['name', 'short_album_name'],
+        how='left',
+    )
 
     # Sentimiento
     def get_sentiment(text):
@@ -366,5 +378,5 @@ st.markdown("---")
 st.markdown(
     "**Trabajo Individual — Extracción de Información** | "
     "Dataset: Spotify 1.2M+ Songs (Kaggle) | "
-    "Letras: AZLyrics / lyrics.ovh"
+    "Letras: lyrics.ovh"
 )
