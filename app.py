@@ -103,7 +103,7 @@ st.markdown(
 
     .editorial-eyebrow {
         font-family: 'Inter', sans-serif;
-        font-size: 0.72rem;
+        font-size: 1.5rem;
         letter-spacing: 0.28em;
         text-transform: uppercase;
         color: #7A2E4A;
@@ -211,6 +211,13 @@ st.markdown(
     /* Selectbox / multiselect */
     [data-baseweb="select"] {
         border-radius: 2px !important;
+    }
+
+    /* Ocultar los anchor links junto a los títulos */
+    h1 > div > a, h2 > div > a, h3 > div > a, h4 > div > a,
+    h1 a.anchor-link, h2 a.anchor-link, h3 a.anchor-link, h4 a.anchor-link,
+    [data-testid="stHeaderActionElements"] {
+        display: none !important;
     }
     </style>
     """,
