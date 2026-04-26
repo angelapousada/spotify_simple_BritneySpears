@@ -66,7 +66,7 @@ INK = "#1F1B24"
 pio.templates["editorial"] = go.layout.Template(
     layout=go.Layout(
         font=dict(family="Inter, Helvetica, Arial, sans-serif", color=INK, size=13),
-        title=dict(font=dict(family="Playfair Display, Georgia, serif", size=20, color=INK)),
+        title=dict(font=dict(family="Inter, Helvetica, Arial, sans-serif", size=20, color=INK)),
         paper_bgcolor=BG,
         plot_bgcolor=BG,
         colorway=PALETTE,
@@ -82,24 +82,24 @@ pio.templates.default = "editorial"
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
     html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         color: #1F1B24;
     }
     .stApp {
         background-color: #FAF7F2;
     }
     h1, h2, h3, h4 {
-        font-family: 'Playfair Display', Georgia, serif !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
         font-weight: 600 !important;
         color: #1F1B24 !important;
         letter-spacing: -0.01em;
     }
-    h1 { font-size: 2.6rem !important; line-height: 1.1; }
-    h2 { font-size: 1.7rem !important; margin-top: 1.5rem; }
-    h3 { font-size: 1.25rem !important; }
+    h1 { font-size: 2.4rem !important; line-height: 1.15; font-weight: 700 !important; }
+    h2 { font-size: 1.6rem !important; margin-top: 1.5rem; }
+    h3 { font-size: 1.2rem !important; }
 
     .editorial-eyebrow {
         font-family: 'Inter', sans-serif;
@@ -116,13 +116,13 @@ st.markdown(
         margin: 1.6rem 0;
     }
     .editorial-lede {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: 1.1rem;
-        font-style: italic;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 1rem;
         color: #4A4147;
-        line-height: 1.55;
+        line-height: 1.6;
         max-width: 60rem;
         margin-bottom: 1.5rem;
+        font-weight: 400;
     }
 
     /* Metric cards */
@@ -141,8 +141,8 @@ st.markdown(
         font-weight: 500 !important;
     }
     [data-testid="stMetricValue"] {
-        font-family: 'Playfair Display', Georgia, serif !important;
-        font-size: 2rem !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        font-size: 1.9rem !important;
         color: #1F1B24 !important;
         font-weight: 600 !important;
     }
@@ -157,7 +157,7 @@ st.markdown(
     [data-testid="stSidebar"] h1,
     [data-testid="stSidebar"] h2,
     [data-testid="stSidebar"] h3 {
-        font-family: 'Playfair Display', Georgia, serif !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
         color: #FFFFFF !important;
     }
     [data-testid="stSidebar"] a {
@@ -274,11 +274,6 @@ data, ALBUM_ORDER = load_data()
 # ============================================================
 # SIDEBAR
 # ============================================================
-st.sidebar.markdown("<div style='font-family: Inter; font-size: 0.7rem; letter-spacing: 0.3em; color: #C9A66B; text-transform: uppercase;'>Discography Study</div>", unsafe_allow_html=True)
-st.sidebar.markdown("<h1 style='font-family: Playfair Display; font-size: 2.1rem; margin-top: 0.2rem; margin-bottom: 0.4rem;'>Britney Spears</h1>", unsafe_allow_html=True)
-st.sidebar.markdown("<div style='font-style: italic; color: #B5838D; margin-bottom: 1.2rem;'>Spotify · Lyrics · Sentiment</div>", unsafe_allow_html=True)
-
-st.sidebar.markdown("---")
 st.sidebar.markdown("<div class='editorial-eyebrow' style='color: #C9A66B;'>Filtro</div>", unsafe_allow_html=True)
 
 selected_albums = st.sidebar.multiselect(
@@ -292,7 +287,7 @@ st.sidebar.markdown("<div class='editorial-eyebrow' style='color: #C9A66B;'>Fuen
 st.sidebar.markdown(
     "Spotify 1.2M+ Songs — [Kaggle](https://www.kaggle.com/datasets/rodolfofigueroa/spotify-12m-songs)  \n"
     "Discografía — [Wikipedia](https://en.wikipedia.org/wiki/Britney_Spears_discography)  \n"
-    "Letras — AZLyrics · lyrics.ovh"
+    "Letras — lyrics.ovh"
 )
 
 # Filtrar datos
@@ -306,15 +301,7 @@ if not df.empty:
 # ============================================================
 # HEADER
 # ============================================================
-st.markdown("<div class='editorial-eyebrow'>An Editorial Analysis · 1998 – 2016</div>", unsafe_allow_html=True)
-st.markdown("<h1>Britney Spears, una discografía en datos</h1>", unsafe_allow_html=True)
-st.markdown(
-    "<p class='editorial-lede'>"
-    "Una lectura cuantitativa de los álbumes de estudio: características sonoras extraídas de Spotify "
-    "y un análisis textual de sus letras, leídas como un retrato emocional a lo largo de dos décadas."
-    "</p>",
-    unsafe_allow_html=True,
-)
+st.markdown("<div class='editorial-eyebrow'>Discografía de Britney Spears · 1998 – 2016</div>", unsafe_allow_html=True)
 
 st.markdown("<hr class='editorial-rule'>", unsafe_allow_html=True)
 
@@ -346,18 +333,8 @@ tab1, tab2, tab3 = st.tabs(["Audio Features", "Análisis de Letras", "Exploraci�
 # TAB 1 — AUDIO FEATURES
 # ------------------------------------------------------------
 with tab1:
-    st.markdown("<div class='editorial-eyebrow'>Sección I</div>", unsafe_allow_html=True)
-    st.markdown("<h2>El sonido</h2>", unsafe_allow_html=True)
-    st.markdown(
-        "<p class='editorial-lede'>"
-        "Las métricas que Spotify extrae de cada pista —energía, valencia, acústica— permiten dibujar "
-        "el perfil sonoro de cada álbum y observar su evolución."
-        "</p>",
-        unsafe_allow_html=True,
-    )
-
     # --- Tracks por álbum ---
-    st.markdown("### Distribución de pistas por álbum")
+    st.markdown("## Distribución de pistas por álbum")
     counts = df.groupby('short_album_name')['name'].count().reindex(
         [a for a in ALBUM_ORDER if a in selected_albums]
     )
@@ -376,8 +353,8 @@ with tab1:
     st.markdown("<hr class='editorial-rule'>", unsafe_allow_html=True)
 
     # --- Scatter: Acousticness vs Valence ---
-    st.markdown("### Acústica frente a positividad")
-    st.caption("Valence mide la positividad musical (0 = melancólica, 1 = luminosa). El tamaño refleja la duración.")
+    st.markdown("## Acústica frente a positividad")
+    st.caption("Valence mide la positividad musical de 0 a 1, siendo 0 más triste y 1 más alegre.")
     fig = px.scatter(
         df, x='valence', y='acousticness',
         color='short_album_name', size='duration_ms',
@@ -392,8 +369,8 @@ with tab1:
     st.markdown("<hr class='editorial-rule'>", unsafe_allow_html=True)
 
     # --- Radar Chart ---
-    st.markdown("### Perfil sonoro por álbum")
-    st.caption("Promedio normalizado de seis dimensiones de audio. Cada trazo dibuja la identidad sonora del álbum.")
+    st.markdown("## Perfil sonoro por álbum")
+    st.caption("Promedio normalizado de las seis características de audio representado por una gráfica de radar.")
 
     album_means = df.groupby('short_album_name')[RADAR_FEATURES].mean().reindex(
         [a for a in ALBUM_ORDER if a in selected_albums]
@@ -425,15 +402,6 @@ with tab1:
 # TAB 2 — LYRICS ANALYSIS
 # ------------------------------------------------------------
 with tab2:
-    st.markdown("<div class='editorial-eyebrow'>Sección II</div>", unsafe_allow_html=True)
-    st.markdown("<h2>Las palabras</h2>", unsafe_allow_html=True)
-    st.markdown(
-        "<p class='editorial-lede'>"
-        "Más allá de la música, las letras revelan un vocabulario, un tono y una geografía emocional. "
-        "Aquí las leemos como texto, en frecuencia y en sentimiento."
-        "</p>",
-        unsafe_allow_html=True,
-    )
 
     lyrics_data = df[df['lyrics_clean'].notna()]
 
@@ -441,7 +409,7 @@ with tab2:
         st.info("No hay letras disponibles para los álbumes seleccionados.")
     else:
         # --- Word Cloud ---
-        st.markdown("### El vocabulario, en una imagen")
+        st.markdown("## World Cloud")
         wc_album = st.selectbox("Álbum", ["Discografía completa"] + selected_albums, label_visibility="collapsed")
 
         if wc_album == "Discografía completa":
@@ -470,7 +438,7 @@ with tab2:
         st.markdown("<hr class='editorial-rule'>", unsafe_allow_html=True)
 
         # --- Sentimiento por álbum ---
-        st.markdown("### Polaridad emocional de cada álbum")
+        st.markdown("## Polaridad emocional de cada álbum")
         st.caption("Polaridad TextBlob en el rango -1 (negativo) a +1 (positivo). Distribución y promedio.")
 
         sentiment_df = lyrics_data[lyrics_data['sentiment'].notna()]
@@ -511,8 +479,8 @@ with tab2:
         st.markdown("<hr class='editorial-rule'>", unsafe_allow_html=True)
 
         # --- Riqueza Léxica ---
-        st.markdown("### Riqueza léxica")
-        st.caption("Ratio de palabras únicas sobre el total (sin stopwords). Cuanto mayor, más diverso es el vocabulario.")
+        st.markdown("## Riqueza léxica")
+        st.caption("Ratio de palabras únicas sobre el total sin stopwords ni otras palabras que tampoco aportan significado.")
 
         richness = (
             lyrics_data.groupby('short_album_name')['lex_richness']
@@ -533,7 +501,7 @@ with tab2:
         st.markdown("<hr class='editorial-rule'>", unsafe_allow_html=True)
 
         # --- Top palabras ---
-        st.markdown("### Las veinte palabras más frecuentes")
+        st.markdown("## Las veinte palabras más frecuentes")
         all_words = [w for w in text.split() if w not in STOPWORDS_EN and len(w) > 2]
         freq = Counter(all_words).most_common(20)
 
@@ -553,18 +521,8 @@ with tab2:
 # TAB 3 — EXPLORATION
 # ------------------------------------------------------------
 with tab3:
-    st.markdown("<div class='editorial-eyebrow'>Sección III</div>", unsafe_allow_html=True)
-    st.markdown("<h2>Exploración</h2>", unsafe_allow_html=True)
-    st.markdown(
-        "<p class='editorial-lede'>"
-        "Un espacio para cruzar dimensiones: ¿coincide cómo suena una canción con lo que dice? "
-        "¿Qué pares de variables describen mejor la discografía?"
-        "</p>",
-        unsafe_allow_html=True,
-    )
-
     # --- Valence vs Sentiment ---
-    st.markdown("### Música contra texto")
+    st.markdown("## Música contra texto")
     st.caption("Valence de Spotify frente al sentimiento extraído de la letra.")
 
     scatter_data = df.dropna(subset=['sentiment', 'valence'])
@@ -589,7 +547,7 @@ with tab3:
     st.markdown("<hr class='editorial-rule'>", unsafe_allow_html=True)
 
     # --- Feature explorer ---
-    st.markdown("### Explorador de variables")
+    st.markdown("## Explorador de variables")
     col_x, col_y = st.columns(2)
     with col_x:
         feat_x = st.selectbox("Eje horizontal", AUDIO_FEATURES, index=AUDIO_FEATURES.index('valence'))
@@ -611,7 +569,7 @@ with tab3:
     st.markdown("<hr class='editorial-rule'>", unsafe_allow_html=True)
 
     # --- Tabla de datos ---
-    st.markdown("### Tabla detallada")
+    st.markdown("## Tabla detallada")
     display_cols = ['name', 'short_album_name', 'year'] + AUDIO_FEATURES[:6] + ['sentiment', 'lex_richness']
     available_cols = [c for c in display_cols if c in df.columns]
     st.dataframe(
@@ -619,16 +577,3 @@ with tab3:
         use_container_width=True,
         height=420,
     )
-
-
-# ============================================================
-# FOOTER
-# ============================================================
-st.markdown(
-    "<div class='editorial-footer'>"
-    "Trabajo Individual — Extracción de Información &nbsp;·&nbsp; "
-    "Dataset: Spotify 1.2M+ Songs (Kaggle) &nbsp;·&nbsp; "
-    "Letras: AZLyrics · lyrics.ovh"
-    "</div>",
-    unsafe_allow_html=True,
-)
