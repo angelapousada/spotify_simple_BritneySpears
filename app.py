@@ -17,7 +17,7 @@ from nltk.corpus import stopwords
 # CONFIG
 # ============================================================
 st.set_page_config(
-    page_title="Britney Spears — Spotify & Lyrics Analysis",
+    page_title="Britney Spears — Spotify & Análisis de letras",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -399,7 +399,7 @@ with tab1:
 
 
 # ------------------------------------------------------------
-# TAB 2 — LYRICS ANALYSIS
+# TAB 2 — Análisis de letras
 # ------------------------------------------------------------
 with tab2:
 
