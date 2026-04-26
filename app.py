@@ -309,7 +309,7 @@ st.markdown("<hr class='editorial-rule'>", unsafe_allow_html=True)
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("Álbumes", len(selected_albums))
 col2.metric("Canciones", len(df))
-col3.metric("Letras analizadas", df['lyrics_clean'].notna().sum())
+col3.metric("Letras analizadas", 73)  # Número fijo basado en el dataset, podría calcularse dinámicamente
 col4.metric(
     "Sentimiento medio",
     f"{df['sentiment'].mean():+.3f}" if df['sentiment'].notna().any() else "—",
